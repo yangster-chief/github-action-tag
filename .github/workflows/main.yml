@@ -1,0 +1,13 @@
+name: echo branch Name
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: TEST
+        run: echo "TEST"
