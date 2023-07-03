@@ -1,8 +1,8 @@
-name: echo branch Name
+name: echo TEST
 on:
   push:
-    branches:
-      - main
+    tags:
+      - 'refs/tags/main-*'
 jobs:
   build:
     runs-on: ubuntu-latest
