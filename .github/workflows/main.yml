@@ -27,3 +27,11 @@ jobs:
       - name: Print Version
         run: |
           echo "New Version: ${{ steps.increment_version.outputs.version }}"
+
+
+      - name: Get tag name
+        id: tag
+        run: echo ::set-output name=tag_name::${GITHUB_REF/refs\/tags\//}
+        
+      - name: Set version name
+        run: echo "Version name ${{ steps.tag.outputs.tag_name }}"
