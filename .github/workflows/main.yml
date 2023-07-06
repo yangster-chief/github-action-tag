@@ -11,22 +11,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Increment Version Code
-        id: increment_version
-        run: |
-          build_number=$(git rev-list --count HEAD)
-          yaml_file_path=pubspec.yaml
-          version=$(grep 'version:' $yaml_file_path | awk '{print $2}')
-          version_name=$(echo $version | awk -F '+' '{print $1}')
-          version_number=$(echo $version | awk -F '+' '{print $2}')
-          new_build_number=$((build_number + 1))
-          new_version="${version_name}+${new_build_number}"
-          sed -i "s/version: $version/version: $new_version/" $yaml_file_path
-          echo "::set-output name=version::$new_version"
+#       - name: Increment Version Code
+#         id: increment_version
+#         run: |
+#           build_number=$(git rev-list --count HEAD)
+#           yaml_file_path=pubspec.yaml
+#           version=$(grep 'version:' $yaml_file_path | awk '{print $2}')
+#           version_name=$(echo $version | awk -F '+' '{print $1}')
+#           version_number=$(echo $version | awk -F '+' '{print $2}')
+#           new_build_number=$((build_number + 1))
+#           new_version="${version_name}+${new_build_number}"
+#           sed -i "s/version: $version/version: $new_version/" $yaml_file_path
+#           echo "::set-output name=version::$new_version"
 
-      - name: Print Version
-        run: |
-          echo "New Version: ${{ steps.increment_version.outputs.version }}"
+#       - name: Print Version
+#         run: |
+#           echo "New Version: ${{ steps.increment_version.outputs.version }}"
 
 
       - name: Get tag name
