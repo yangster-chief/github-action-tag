@@ -33,7 +33,7 @@ jobs:
         id: tag
         run: |
           VERSION_NAME=${GITHUB_REF/refs\/tags\//}
-          VERSION_NAME=${VERSION_NAME\/v}
+          VERSION_NAME=${VERSION_NAME/v}
           echo ::set-output name=tag_name::${VERSION_NAME}
         
       - name: Set version name
